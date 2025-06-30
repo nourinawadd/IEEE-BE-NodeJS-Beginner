@@ -1,0 +1,19 @@
+{
+  "name": "task-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "commander": "^14.0.0",
+    "inquirer": "^12.6.3"
+  },
+  "bin": {
+    "github-cli": "./index.js"
+  },
+  "type": "module"
+}
