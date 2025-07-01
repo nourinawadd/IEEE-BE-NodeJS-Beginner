@@ -15,4 +15,4 @@ This is a simple Hangman game built with JavaScript using object-oriented progra
 3. Run the game with the following command:
 
 ```bash
-node hangman.js
+node app
