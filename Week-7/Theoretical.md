@@ -28,12 +28,38 @@ console.log(typeof typeof student)
 
 ### Express Section:
 1. Define the ***"Middleware"*** term and it's usage in Express.js
+   - Middleware are functions that came into play after the server receives the request and before the response is sent to the client.
+   - An Express application can use the following types of middleware:
+      - Application-level middleware
+      - Router-level middleware
+      - Error-handling middleware
+      - Built-in middleware
+      - Third-party middleware
 
-2. What are the common reasons that can cause an Express application to hang or become unresponsive? Please provide specific scenarios or examples.
+3. What are the common reasons that can cause an Express application to hang or become unresponsive? Please provide specific scenarios or examples.
+   -  If the current middleware function does not end the request-response cycle & does not call the next() method, the request will be left hanging.
+   -  If a middleware or route handler involves asynchronous operations (e.g., database queries, API calls), and the callback function isn't properly handled, it can cause the request to hang.
+   -  Incorrect route handling, such as a missing or incorrect route definition can lead to hanging requests.
 
-3. what is the method used to parse the response body comes that from **HTML** form?
+5. What is the method used to parse the response body comes that from **HTML** form?
+   - The urlencoded() middleware by Express
+   - Example:
+   ```JS
+   const express = require('express');
+   const app = express();
+   
+   // Middleware to parse form data
+   app.use(express.urlencoded({ extended: true }));
+   
+   app.post('/submit', (req, res) => {
+     console.log(req.body); // Parsed form data
+     res.send('Form submitted!');
+   });
+   
+   app.listen(3000);
+   ```
 
-4. If we access **"/profile/1307?tab=friends&history=off"**
+7. If we access **"/profile/1307?tab=friends&history=off"**
 What will be outputted to the backend console?
 
 ```JS
@@ -42,6 +68,9 @@ app.get('/profile/:userId',(req,res)=>{
     console.log(req.query)
 })
 ```
+   - If the "res.params" is actually "req.params", then the output will be:
+   - { userId: '1307' }
+   - { tab: 'friends', history: 'off' }
 
 5. In a scenario, the user tries to enter the login page while he is already logged in.
 You, as the developer, know that he did that by mistake. So you need to send him to the homepage instead. How can you implement that in Express.js?
@@ -52,6 +81,7 @@ b. res.navigate('/')
 c. res.redirect('/')
 d. res.send('/')
 ```
+   - c.res.redirect('/)
 ---
 
 ### MongoDB Section (10 pts. 2 for each question):
