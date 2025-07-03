@@ -1,6 +1,9 @@
-1. **(3 pts.)** Explain the four types of function binding in JavaScript: implicit binding, explicit binding, new binding, and default binding. How do they differ from each other?
+### Recap Section:
+1. Explain the four types of function binding in JavaScript: implicit binding, explicit binding, new binding, and default binding. How do they differ from each other?
+   - Default binding: if the function housing a this reference is a standalone function, then that function is bound to the global object. (doesn't apply to strict mode)
+   - Implicit binding: 
 
-2. **(2 pts.)** What will be the output of this code and why?
+3. What will be the output of this code and why?
 
 ```JS
 let student = { 
@@ -9,15 +12,21 @@ let student = {
 }
 console.log(typeof typeof student)
 ```
-<br>
+   - The output is "string", since typeof student (an object) would result in "object", which is a string. Therfore, typeof "object" returns "string".
 
-3. **(3 pts.)** what the modules and what the differences between ***CommonJS*** modules and ***EJS*** modules?
+3. What the modules and what the differences between ***CommonJS*** modules and ***EJS*** modules?
+   -  Modules organize code into self-contained chunks that make up a lerger, more complex app.
+   -  By default, Node.js treats JavaScript code as CommonJS modules
+   -  CommonJS modules are characterized by the require statement for module imports and module.exports for module exports.
+   -  ES modules are characterized by import/ export keywords.
 
 
-4. **(2 pts.)** What is the purpose of ***"scripts"*** attribute in package.json?
+5. What is the purpose of ***"scripts"*** attribute in package.json?
+   - The scripts property contains a set of entries; the key for each entry is a script name, and the corresponding value is a user-defined command to be executed.
+   - Scripts are frequently used to test, build, and streamline the needed commands to work with a module. 
 ---
 
-- ### Express Section (10 pts. 2 pts for each question):
+### Express Section:
 1. Define the ***"Middleware"*** term and it's usage in Express.js
 
 2. What are the common reasons that can cause an Express application to hang or become unresponsive? Please provide specific scenarios or examples.
@@ -45,7 +54,7 @@ d. res.send('/')
 ```
 ---
 
-- ### MongoDB Section (10 pts. 2 for each question):
+### MongoDB Section (10 pts. 2 for each question):
 
 1. What is the default data type of a MongoDB document id?
 
