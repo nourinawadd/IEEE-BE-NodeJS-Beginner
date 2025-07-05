@@ -36,12 +36,12 @@ console.log(typeof typeof student)
       - Built-in middleware
       - Third-party middleware
 
-3. What are the common reasons that can cause an Express application to hang or become unresponsive? Please provide specific scenarios or examples.
+2. What are the common reasons that can cause an Express application to hang or become unresponsive? Please provide specific scenarios or examples.
    -  If the current middleware function does not end the request-response cycle & does not call the next() method, the request will be left hanging.
    -  If a middleware or route handler involves asynchronous operations (e.g., database queries, API calls), and the callback function isn't properly handled, it can cause the request to hang.
    -  Incorrect route handling, such as a missing or incorrect route definition can lead to hanging requests.
 
-5. What is the method used to parse the response body comes that from **HTML** form?
+3. What is the method used to parse the response body comes that from **HTML** form?
    - The urlencoded() middleware by Express
    - Example:
    ```JS
@@ -87,10 +87,14 @@ d. res.send('/')
 ### MongoDB Section (10 pts. 2 for each question):
 
 1. What is the default data type of a MongoDB document id?
+   - Object ID
 
-2. What is the Mongoose model, How to create one and, What are its uses?
+3. What is the Mongoose model, How to create one and, What are its uses?
+   - A Mongoose model is a constructor compiled from a schema, providing an interface for interacting with the database to create, read, update, and delete documents.
+   - To create one you need to define the schema defining the structure of your documents, and then use mongoose.model() to create a model from that schema.
+   - It's used to interact with MongoDB databases, by creating documents in the code.
 
-3. What will be the output of this code?
+5. What will be the output of this code?
 ```JS
 - const x = User.findOne({username:"elgokar"})
 - const y = User.find({})
@@ -99,7 +103,12 @@ d. res.send('/')
 console.log(typeof x)
 console.log(typeof y)
 console.log(typeof z)
-``` 
+```
+   - object
+   - object
+   - object
+   - Since the first two return query objects, and the last one returns a document or null, they are all objects.
+
 <br>
 
 4. In the following code 3b3aziz trying to update a user age in the database but it doosn't work as expected, what the problem in his code and how to solve it?
@@ -113,5 +122,21 @@ const updateAge = () => {
     console.log(user.age) //output ===> 20
 }
 ```
+   - He's treating the findOne() method as synchronous, when it is asynchronous, so the callback isn't used properly and therefore user.age is not behaving as expected.
+   - To fix it:
+```JS
+const updateAge = () => {
+   const user = User.findOne({username:"sherbiny"}, (err, user) => {
+      if (err) return console.error(err);
+      console.log(user.age) // output ===> 20
+      user.age = 25;
+      user.save((err, updatedUser) => {
+         if (err) return console.error(err);
+         console.log(updatedUser.age); // output ===> 25
+      })
+   })
+};
 
+```
 5. How would you add ***validation*** to a Mongoose schema to ensure a string property is **at least 3 characters** long?
+   - in the schema, add a minLength validator to equal 3.
