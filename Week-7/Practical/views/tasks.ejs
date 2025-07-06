@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Task List</title></head>
+<body>
+    <h1>Your Tasks</h1>
+    <ul>
+        <% tasks.forEach(task => { %>
+            <li>
+                <%= task.title %>
+                <form action="/delete/<%= task._id %>" method="POST" style="display:inline">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    <a href="/add">Add a New Task</a>
+</body>
+</html>
