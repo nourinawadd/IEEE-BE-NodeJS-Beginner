@@ -3,11 +3,43 @@
 <head><title>Add Member</title></head>
 <body>
     <h1>Add a New Member</h1>
+
+    <% if (errors && errors.length > 0) { %>
+        <ul style="color: red;">
+        <% errors.forEach(error => { %>
+            <li><%= error %></li>
+        <% }) %>
+        </ul>
+    <% } %>
+
     <form action="/add" method="POST">
-        <input type="text" name="title" required placeholder="Member name">
+        <label>Name:</label>
+        <input type="text" name="name" value="<%= data?.name || '' %>" required><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" value="<%= data?.age || '' %>" required><br>
+
+        <label>University:</label>
+        <input type="text" name="university" value="<%= data?.university || '' %>" required><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" value="<%= data?.email || '' %>" required><br>
+
+        <label>Phone:</label>
+        <input type="text" name="phone" value="<%= data?.phone || '' %>" required><br>
+
+        <label>Technical Committee:</label>
+        <input type="text" name="technicalCommittee" value="<%= data?.technicalCommittee || '' %>"><br>
+
+        <label>Non-Technical Committee:</label>
+        <input type="text" name="nonTechnicalCommittee" value="<%= data?.nonTechnicalCommittee || '' %>"><br>
+
+        <label>Image URL:</label>
+        <input type="text" name="imageUrl" value="<%= data?.imageUrl || '' %>"><br>
+
         <button type="submit">Add Member</button>
     </form>
-    <a href="/index">Go to Members List</a>
-    <a href="/tasks">Go to Members List</a>
+
+    <a href="/">Back to Homepage</a>
 </body>
 </html>

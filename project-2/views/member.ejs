@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Member Details</title>
+</head>
+<body>
+    <h1><%= member.name %>'s Details</h1>
+
+    <p><strong>Age:</strong> <%= member.age %></p>
+    <p><strong>University:</strong> <%= member.university %></p>
+    <p><strong>Email:</strong> <%= member.email %></p>
+    <p><strong>Phone:</strong> <%= member.phone %></p>
+    <p><strong>Technical Committee:</strong> <%= member.technicalCommittee || 'N/A' %></p>
+    <p><strong>Non-Technical Committee:</strong> <%= member.nonTechnicalCommittee || 'N/A' %></p>
+
+    <p>
+        <a href="/edit/<%= member._id %>">Edit</a> |
+        <form action="/delete/<%= member._id %>" method="POST" style="display:inline">
+        <button type="submit">Delete</button>
+        </form>
+    </p>
+
+    <p><a href="/">Back to Homepage</a></p>
+</body>
+</html>

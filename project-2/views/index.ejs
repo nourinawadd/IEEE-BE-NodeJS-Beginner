@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Team Members</title></head>
+<body>
+    <h1>Team Members Dashboard</h1>
+
+    <a href="/add">Add New Member</a><br>
+
+        <ul>
+        <% members.forEach(member => { %>
+            <li>
+            <strong><%= member.name %></strong> - <%= member.email %><br>
+            <a href="/member/<%= member._id %>">View</a> |
+            <a href="/member/edit/<%= member._id %>">Edit</a> |
+            <form action="/delete/<%= member._id %>" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+            </li>
+            <hr>
+        <% }) %>
+        </ul>
+</body>
+</html>
