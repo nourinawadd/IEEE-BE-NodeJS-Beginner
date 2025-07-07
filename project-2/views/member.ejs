@@ -13,8 +13,8 @@
     <p><strong>Non-Technical Committee:</strong> <%= member.nonTechnicalCommittee || 'N/A' %></p>
 
     <p>
-        <a href="/edit/<%= member._id %>">Edit</a> |
-        <form action="/delete/<%= member._id %>" method="POST" style="display:inline">
+        <a href="/member/edit/<%= member._id %>">Edit</a> |
+        <form action="/member/delete/<%= member._id %>" method="POST" style="display:inline">
         <button type="submit">Delete</button>
         </form>
     </p>

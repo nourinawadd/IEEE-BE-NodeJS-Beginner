@@ -12,7 +12,7 @@
             <strong><%= member.name %></strong> - <%= member.email %><br>
             <a href="/member/<%= member._id %>">View</a> |
             <a href="/member/edit/<%= member._id %>">Edit</a> |
-            <form action="/delete/<%= member._id %>" method="POST" style="display:inline;">
+            <form action="/member/delete/<%= member._id %>" method="POST" style="display:inline;">
                 <button type="submit">Delete</button>
             </form>
             </li>
